@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pizzeria kod Mirka i Slavka</title>
+</head>
+<body>
+	<h1 th:text="#{welcome}">Dobrodošli u pizzeriu kod Mirka i Slavka</h1>
+
+	<p th:each="pizza, iterationStatus: ${menu}">
+		<span th:text="${pizza.name}">NazivPizze</span> 
+		(<span th:each="topping, iterationStatus : ${pizza.toppings}">
+			<span th:text="#{'pizza.topping.' + ${topping}}">sastojak</span> 
+			<span th:unless="${iterationStatus.last}">, </span>
+			
+		</span>) 
+		<span th:text="#{${pizza.size}}">size</span> &mdash;
+		<span th:text="${pizza.price}">135.00</span>
+	</p>
+
+</body>
+</html>
